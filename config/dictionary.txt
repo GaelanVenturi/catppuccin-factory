@@ -1,10 +1,12 @@
+Catppuccin
+Malik
 black
+catppuccin
 isinstance
 kwargs
-Malik
 matplotlib
+nord
 numpy
 pluggy
 pylint
 pytest
-nord
