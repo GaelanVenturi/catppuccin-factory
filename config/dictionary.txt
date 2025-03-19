@@ -1,0 +1,10 @@
+black
+isinstance
+kwargs
+Malik
+matplotlib
+numpy
+pluggy
+pylint
+pytest
+nord

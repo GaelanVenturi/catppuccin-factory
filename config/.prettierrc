@@ -1,0 +1,41 @@
+{
+  "printWidth": 80,
+  "tabWidth": 4,
+  "useTabs": false,
+  "singleQuote": false,
+  "semi": true,
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": "*.py",
+      "options": {
+        "parser": "python",
+        "requirePragma": false,
+        "plugins": ["pylint"]
+      }
+    },
+    {
+      "files": "*.cpp",
+      "options": {
+        "parser": "cpp",
+        "plugins": ["clang"]
+      }
+    },
+    {
+      "files": "Makefile",
+      "options": {
+        "useTabs": true,
+        "tabWidth": 4
+      }
+    },
+    {
+      "files": "*.yaml",
+      "options": {
+        "parser": "yaml"
+      }
+    }
+  ],
+  "scripts": {
+    "format": "prettier --write . && black ."
+  }
+}
