@@ -1,6 +1,7 @@
 Catppuccin
 Malik
 Onedark
+Pacitti
 black
 catppuccin
 conv
