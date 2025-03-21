@@ -3,13 +3,20 @@ import signal
 import argparse
 import sys
 import os
+import platform
 
 from ImageGoNord import GoNord
 from rich.console import Console
 from rich.panel import Panel
 
-# CHANGE pirate TO YOUR OWN USER NAME, DO NOT CHANGE THE DIRECTORY ITSELF
-mypath = "/home/faaris/Pictures/cat/"
+# Set the PATH dynamically based on the operating system
+if platform.system() == "Windows":
+    PATH = os.path.expanduser(r"~\Pictures\cat-factory-output")
+else:
+    PATH = os.path.expanduser("~/Pictures/cat-factory-output")
+
+# Ensure the directory exists
+os.makedirs(PATH, exist_ok=True)
 
 
 def main():
@@ -75,7 +82,7 @@ def process_image(image_path, console, cat_factory):
     console.print(f"🔨 [blue]manufacturing '{os.path.basename(image_path)}'...[/]")
 
     # TODO: might be a better idea to save the new Image in the same directory the command is being run from
-    save_path = os.path.join(mypath, "cat_" + os.path.basename(image_path))
+    save_path = os.path.join(PATH, "cat_" + os.path.basename(image_path))
 
     cat_factory.convert_image(image, save_path=(save_path))
     console.print(f"✅ [bold green]Done![/] [green](saved at '{save_path}')[/]")
