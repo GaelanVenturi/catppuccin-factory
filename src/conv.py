@@ -1,4 +1,18 @@
 #!/usr/bin/env python3
+"""
+Catppuccin Factory: A script to manufacture Catppuccin-themed wallpapers.
+
+This script processes images by applying a custom Catppuccin color palette
+and saves the output images to a designated directory. It supports both
+command-line arguments and interactive user input for specifying image paths.
+
+Features:
+- Dynamically sets the output directory based on the operating system.
+- Handles user interruptions gracefully (Ctrl+C).
+- Provides a CLI and TUI for user interaction.
+
+"""
+
 import signal
 import argparse
 import sys
@@ -20,7 +34,12 @@ os.makedirs(PATH, exist_ok=True)
 
 
 def main():
+    """
+    Main entry point for the script.
 
+    Sets up signal handling, initializes the console and GoNord instance,
+    and processes images based on user input or command-line arguments.
+    """
     signal.signal(signal.SIGINT, signal_handler)
     console = Console()
 
@@ -30,24 +49,33 @@ def main():
 
     # Checks if there's an argument
     if len(sys.argv) > 1:
-        image_paths = fromCommandArgument(console)
+        image_paths = from_command_argument()
     else:
-        image_paths = fromTui(console)
+        image_paths = from_tui(console)
 
     for image_path in image_paths:
         if os.path.isfile(image_path):
             process_image(image_path, console, cat_factory)
         else:
             console.print(
-                f"❌ [red]We had a problem in the pipeline! \nThe image at '{image_path}' could not be found! \nSkipping... [/]"
+                f"❌ [red]We had a problem in the pipeline! \nThe image at '{image_path}' "
+                f"could not be found! \nSkipping... [/]"
             )
             continue
 
 
-# Gets the file path from the Argument
-def fromCommandArgument(console):
+def from_command_argument():
+    """
+    Parses command-line arguments to get image paths.
+
+    Args:
+        console (Console): The Rich console instance for displaying messages.
+
+    Returns:
+        list: A list of image paths provided via the command line.
+    """
     command_parser = argparse.ArgumentParser(
-        description="A simple cli to manufacture Catppuccin themed wallpapers."
+        description="A simple CLI to manufacture Catppuccin-themed wallpapers."
     )
     command_parser.add_argument(
         "Path", metavar="path", nargs="+", type=str, help="The path(s) to the image(s)."
@@ -57,9 +85,16 @@ def fromCommandArgument(console):
     return args.Path
 
 
-# Gets the file path from user input
-def fromTui(console):
+def from_tui(console):
+    """
+    Prompts the user to input image paths interactively.
 
+    Args:
+        console (Console): The Rich console instance for displaying messages.
+
+    Returns:
+        list: A list of image paths provided by the user.
+    """
     console.print(
         Panel(
             "🏭 [bold magenta] Catppuccin Factory [/] 🏭",
@@ -71,26 +106,42 @@ def fromTui(console):
     return [
         os.path.expanduser(path)
         for path in console.input(
-            "🖼️ [bold yellow]Which image(s) do you want to manufacture? (image paths separated by spaces):[/] "
+            (
+                "🖼️ [bold yellow]Which image(s) do you want to manufacture? "
+                "(image paths separated by spaces):[/] "
+            )
         ).split()
     ]
 
 
 def process_image(image_path, console, cat_factory):
+    """
+    Processes a single image by applying the Catppuccin palette.
+
+    Args:
+        image_path (str): The path to the image to be processed.
+        console (Console): The Rich console instance for displaying messages.
+        cat_factory (GoNord): The GoNord instance for image processing.
+    """
     image = cat_factory.open_image(image_path)
 
     console.print(f"🔨 [blue]manufacturing '{os.path.basename(image_path)}'...[/]")
 
-    # TODO: might be a better idea to save the new Image in the same directory the command is being run from
+    # Save the new image in the designated output directory
     save_path = os.path.join(PATH, "cat_" + os.path.basename(image_path))
 
-    cat_factory.convert_image(image, save_path=(save_path))
+    cat_factory.convert_image(image, save_path=save_path)
     console.print(f"✅ [bold green]Done![/] [green](saved at '{save_path}')[/]")
 
 
 def add_cat_palette(cat_factory):
+    """
+    Adds the Catppuccin color palette to the GoNord instance.
 
-    catPalette = [
+    Args:
+        cat_factory (GoNord): The GoNord instance to which the palette is added.
+    """
+    cat_palette = [
         "#F2CDCD",
         "#DDB6F2",
         "#F5C2E7",
@@ -115,12 +166,18 @@ def add_cat_palette(cat_factory):
         "#F5E0DC",
     ]
 
-    for color in catPalette:
+    for color in cat_palette:
         cat_factory.add_color_to_palette(color)
 
 
-## handle CTRL + C
-def signal_handler(signal, frame):
+def signal_handler():
+    """
+    Handles the SIGINT signal (Ctrl+C) to gracefully exit the program.
+
+    Args:
+        signal (int): The signal number.
+        frame (FrameType): The current stack frame.
+    """
     print()
     sys.exit(0)
 
