@@ -13,11 +13,11 @@ Features:
 
 """
 
-import signal
 import argparse
-import sys
 import os
 import platform
+import signal
+import sys
 
 from ImageGoNord import GoNord
 from rich.console import Console

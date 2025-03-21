@@ -1,2 +1,6 @@
-rich
 image-go-nord
+pylint
+rich
+black 
+pytest
+pre-commit
