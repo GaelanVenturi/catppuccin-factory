@@ -2,6 +2,7 @@ Catppuccin
 Malik
 Onedark
 Pacitti
+argparse
 autoupdate
 black
 browniebroke

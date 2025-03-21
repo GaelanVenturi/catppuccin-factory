@@ -1,6 +1,7 @@
-image-go-nord
-pylint
-rich
+argparse
 black 
-pytest
+image-go-nord
 pre-commit
+pylint
+pytest
+rich
