@@ -3,6 +3,7 @@ Malik
 Onedark
 Pacitti
 black
+browniebroke
 catppuccin
 conv
 factorypy
@@ -15,3 +16,4 @@ numpy
 pluggy
 pylint
 pytest
+autoupdate
