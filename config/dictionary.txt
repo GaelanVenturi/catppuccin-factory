@@ -10,3 +10,5 @@ numpy
 pluggy
 pylint
 pytest
+conv
+factorypy

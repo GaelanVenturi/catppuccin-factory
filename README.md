@@ -4,7 +4,7 @@ Forked from [tokyo-night-factory](https://github.com/rototrash/tokyo-night-facto
 
 A simple cli to convert any image to a catppuccin themed wallpaper
 
-![example](./example.png)
+![example](./imgs/example.png)
 
 ## Installation
 
