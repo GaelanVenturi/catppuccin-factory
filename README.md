@@ -1,6 +1,6 @@
 # 🗼Catppuccin Factory 🏭
 
-Forked from [tokyo-night-factory](https://github.com/rototrash/tokyo-night-factory) 😄
+Forked from [catppuccin-factory](https://github.com/fxzzi/catppuccin-factory.git) by @fxzzi
 
 A simple cli to convert any image to a catppuccin themed wallpaper
 
@@ -49,5 +49,6 @@ catFactory /path/to/image/
 
 ## Credits
 
+- Credit to @fxzzi for the original repo, this is a fork of it.
 - **Made** with [Schrodinger-Hat's ImageGoNord](https://github.com/Schrodinger-Hat), but with the Onedark palette
 - **Text User Interface (TUI)** made with [rich](https://github.com/willmcgugan/rich)

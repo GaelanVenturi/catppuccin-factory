@@ -1,7 +1,11 @@
 Catppuccin
 Malik
+Onedark
 black
 catppuccin
+conv
+factorypy
+fxzzi
 isinstance
 kwargs
 matplotlib
@@ -10,5 +14,3 @@ numpy
 pluggy
 pylint
 pytest
-conv
-factorypy

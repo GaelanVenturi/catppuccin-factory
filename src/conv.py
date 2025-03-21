@@ -5,12 +5,11 @@ import sys
 import os
 
 from ImageGoNord import GoNord
-
 from rich.console import Console
 from rich.panel import Panel
 
 # CHANGE pirate TO YOUR OWN USER NAME, DO NOT CHANGE THE DIRECTORY ITSELF
-PATH = "/home/faaris/Pictures/cat/"
+mypath = "/home/faaris/Pictures/cat/"
 
 
 def main():
